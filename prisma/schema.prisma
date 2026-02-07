@@ -1,0 +1,62 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+        
+
+model User {
+  id       Int     @id @default(autoincrement())
+  username String
+  email    String  @unique
+  password String
+  role     String  // admin, editor
+  
+  @@map("users")
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String    // Zakat, Keuangan Keluarga, Tips
+  articles Article[]
+  
+  @@map("categories")
+}
+
+model Article {
+  id          Int      @id @default(autoincrement())
+  categoryId  Int      @map("category_id")
+  title       String
+  content     String   @db.Text
+  imageUrl    String?  @map("image_url")
+  createdAt   DateTime @default(now()) @map("created_at")
+  
+  category    Category @relation(fields: [categoryId], references: [id])
+  
+  @@map("articles")
+}
+
+model Video {
+  id         Int      @id @default(autoincrement())
+  title      String
+  youtubeUrl String   @map("youtube_url")
+  createdAt  DateTime @default(now()) @map("created_at")
+  
+  @@map("videos")
+}
+
+model Question {
+  id          Int      @id @default(autoincrement())
+  name        String
+  phoneNumber String   @map("phone_number")
+  message     String   @db.Text
+  status      String   @default("pending") // pending, replied
+  createdAt   DateTime @default(now()) @map("created_at")
+  
+  @@map("questions")
+}

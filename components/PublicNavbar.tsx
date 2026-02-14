@@ -10,6 +10,7 @@ const navLinks = [
   { href: "/kalkulator", label: "Kalkulator Zakat" },
   { href: "/media", label: "Media" },
   { href: "/layanan", label: "Layanan" },
+  { href: "/program", label: "Program" },
 ];
 
 export default function PublicNavbar() {

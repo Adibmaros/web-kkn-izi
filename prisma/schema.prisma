@@ -60,3 +60,39 @@ model Question {
   
   @@map("questions")
 }
+
+model ProgramCategory {
+  id          Int       @id @default(autoincrement())
+  name        String    // Sumatera, Palestina, Wilayah 3T & Nasional
+  slug        String    @unique
+  description String?   @db.Text
+  title       String?
+  bannerUrl   String?   @map("banner_url")
+  backgroundUrl String? @map("background_url")
+  programs    Program[]
+  
+  @@map("program_categories")
+}
+
+model Program {
+  id                Int              @id @default(autoincrement())
+  categoryId        Int              @map("category_id")
+  slug              String           @unique
+  title             String
+  titleDescription  String?          @map("title_description")
+  content           String           @db.Text
+  imageUrl          String           @map("image_url")
+  raised            Int              @default(0) // dalam rupiah
+  goal              Int              // target dana dalam rupiah
+  minimalAmount     Int              @map("minimal_amount") // minimal donasi
+  endDate           DateTime         @map("end_date")
+  programOrder      Int?             @map("program_order") // untuk urutan tampil
+  distributionUrl   String?          @map("distribution_url") // link untuk laporan penyaluran
+  isActive          Boolean          @default(true) @map("is_active")
+  createdAt         DateTime         @default(now()) @map("created_at")
+  updatedAt         DateTime         @updatedAt @map("updated_at")
+  
+  category          ProgramCategory  @relation(fields: [categoryId], references: [id])
+  
+  @@map("programs")
+}

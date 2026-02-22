@@ -40,7 +40,9 @@ export default function ProgramDetail({ params }: { params: Promise<{ id: string
 
   const progress = getProgress(program.raised, program.goal);
   const daysLeft = Math.ceil((new Date(program.endDate).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
-  const donationUrl = `https://bookingberkahramadhan.com/programs/${program.slug}`;
+  const whatsappNumber = "6282180682745";
+  const whatsappMessage = encodeURIComponent(`Assalamualaikum, saya ingin berdonasi untuk program "${program.title}". Mohon informasi lebih lanjut. Terima kasih.`);
+  const donationUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -122,7 +124,7 @@ export default function ProgramDetail({ params }: { params: Promise<{ id: string
               {daysLeft <= 0 ? "Program Berakhir" : "Donasi Sekarang"}
             </a>
 
-            <p className="text-xs text-gray-500 mt-3 text-center">Anda akan diarahkan ke halaman Booking Berkah Ramadhan</p>
+            <p className="text-xs text-gray-500 mt-3 text-center">Anda akan diarahkan ke WhatsApp untuk konfirmasi donasi</p>
 
             {/* Info */}
             <div className="mt-6 pt-6 border-t border-gray-200">

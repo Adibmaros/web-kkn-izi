@@ -50,8 +50,8 @@ export default function Footer() {
             <h4 className="font-semibold text-white mb-3">Kontak</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
-                  WhatsApp: +62 812-3456-7890
+                <a href="https://wa.me/6282180682745" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+                  WhatsApp: +62 821-8068-2745
                 </a>
               </li>
               <li>Email: info@izi-edukasi.id</li>

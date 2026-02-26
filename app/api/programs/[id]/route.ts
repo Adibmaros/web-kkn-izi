@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
 // GET /api/programs/[id] - Get program by ID or slug
-export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function GET(request: NextRequest, { params }: any) {
   try {
     const { id } = await params;
 
@@ -11,13 +11,13 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
 
     const program = isNumeric
       ? await prisma.program.findUnique({
-          where: { id: parseInt(id) },
-          include: { category: true },
-        })
+        where: { id: parseInt(id) },
+        include: { category: true },
+      })
       : await prisma.program.findUnique({
-          where: { slug: id },
-          include: { category: true },
-        });
+        where: { slug: id },
+        include: { category: true },
+      });
 
     if (!program) {
       return NextResponse.json({ error: "Program not found" }, { status: 404 });
@@ -31,7 +31,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
 }
 
 // PUT /api/programs/[id] - Update program (admin only)
-export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function PUT(request: NextRequest, { params }: any) {
   try {
     const { id } = await params;
     const body = await request.json();
@@ -66,7 +66,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
 }
 
 // DELETE /api/programs/[id] - Delete program (admin only)
-export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function DELETE(request: NextRequest, { params }: any) {
   try {
     const { id } = await params;
 

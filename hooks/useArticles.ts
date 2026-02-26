@@ -41,6 +41,34 @@ export function useArticle(id: number) {
   });
 }
 
+// Upload image to Supabase Storage via API
+export async function uploadArticleImage(file: File): Promise<{ url: string; path: string }> {
+  const formData = new FormData();
+  formData.append("file", file);
+  const res = await fetch("/api/upload", {
+    method: "POST",
+    body: formData,
+  });
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(err.error || "Gagal mengupload gambar");
+  }
+  return res.json();
+}
+
+// Delete image from Supabase Storage via API
+export async function deleteArticleImage(path: string): Promise<void> {
+  const res = await fetch("/api/upload", {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ path }),
+  });
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(err.error || "Gagal menghapus gambar");
+  }
+}
+
 export function useCreateArticle() {
   const qc = useQueryClient();
   return useMutation({

@@ -2,6 +2,7 @@
 
 import { use } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useArticle } from "@/hooks/useArticles";
 
 export default function ArticleDetail({ params }: { params: Promise<{ id: string }> }) {
@@ -41,8 +42,15 @@ export default function ArticleDetail({ params }: { params: Promise<{ id: string
       </p>
 
       {article.imageUrl && (
-        <div className="rounded-2xl overflow-hidden mb-8">
-          <img src={article.imageUrl} alt={article.title} className="w-full h-auto object-cover" />
+        <div className="relative w-full aspect-video rounded-2xl overflow-hidden mb-8">
+          <Image
+            src={article.imageUrl}
+            alt={article.title}
+            fill
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="object-cover"
+            priority
+          />
         </div>
       )}
 

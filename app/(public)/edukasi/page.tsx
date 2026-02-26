@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useArticles } from "@/hooks/useArticles";
 import { useCategories } from "@/hooks/useCategories";
 import { useState } from "react";
@@ -13,7 +14,7 @@ export default function EdukasiPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="text-center mb-10">
-        <h1 className="text-3xl font-bold text-gray-900 mb-3">Edukasi Zakat & Keuangan</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-3">Edukasi Zakat &amp; Keuangan</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">Artikel interaktif mengenai zakat, literasi keuangan, dan tips manajemen keuangan rumah tangga.</p>
       </div>
 
@@ -43,8 +44,14 @@ export default function EdukasiPage() {
           {articles?.map((article) => (
             <Link key={article.id} href={`/edukasi/${article.id}`} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md hover:-translate-y-1 transition-all">
               {article.imageUrl && (
-                <div className="h-48 bg-gray-100 overflow-hidden">
-                  <img src={article.imageUrl} alt={article.title} className="w-full h-full object-cover" />
+                <div className="relative h-48 bg-gray-100 overflow-hidden">
+                  <Image
+                    src={article.imageUrl}
+                    alt={article.title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover"
+                  />
                 </div>
               )}
               <div className="p-5">

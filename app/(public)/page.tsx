@@ -7,12 +7,12 @@ const features = [
     desc: "Pelajari pengertian, jenis, dan syarat wajib zakat secara lengkap dan mudah dipahami.",
     href: "/edukasi",
   },
-  {
-    icon: "🧮",
-    title: "Kalkulator Zakat",
-    desc: "Hitung jumlah zakat yang wajib Anda keluarkan berdasarkan penghasilan dan tabungan.",
-    href: "/kalkulator",
-  },
+  // {
+  //   icon: "🧮",
+  //   title: "Kalkulator Zakat",
+  //   desc: "Hitung jumlah zakat yang wajib Anda keluarkan berdasarkan penghasilan dan tabungan.",
+  //   href: "/kalkulator",
+  // },
   {
     icon: "💰",
     title: "Literasi Keuangan",

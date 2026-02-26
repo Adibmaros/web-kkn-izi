@@ -57,8 +57,8 @@ export default function HomePage() {
               <Link href="/edukasi" className="bg-white text-emerald-700 px-8 py-3 rounded-xl font-semibold hover:bg-emerald-50 transition">
                 Mulai Belajar
               </Link>
-              <Link href="/kalkulator" className="border-2 border-white text-white px-8 py-3 rounded-xl font-semibold hover:bg-white/10 transition">
-                Hitung Zakat
+              <Link href="/program" className="border-2 border-white text-white px-8 py-3 rounded-xl font-semibold hover:bg-white/10 transition">
+                Lihat Program
               </Link>
             </div>
           </div>

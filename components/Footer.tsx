@@ -28,11 +28,6 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/kalkulator" className="hover:text-white transition">
-                  Kalkulator Zakat
-                </Link>
-              </li>
-              <li>
                 <Link href="/media" className="hover:text-white transition">
                   Media
                 </Link>
